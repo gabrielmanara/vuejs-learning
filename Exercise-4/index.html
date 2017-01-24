@@ -1,0 +1,96 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+<style>
+  #effect {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.highlight {
+  background-color: red;
+  width: 200px !important;
+}
+
+.shrink {
+  background-color: gray;
+  width: 50px !important;
+}
+
+.color {
+  color: red;
+}
+
+.border {
+  border-bottom: solid 1px black;
+}
+
+.float {
+  float: right;
+}
+
+.background {
+  background: blue;
+}
+
+#effect.bordered {
+  border-style: dashed;
+}
+
+.box {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 30px;
+  background: #CCC;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: green;
+}
+</style>
+<div id="exercise">
+  <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+  <div>
+    <button @click="startEffect">Start Effect</button>
+    <div id="effect" :class="[theClass == true ? 'shrink' : 'highlight']"></div>
+  </div>
+  <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+  <div :class="['color', 'border', 'float']">I got no class :(</div>
+  <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+  <div>
+    <input type="text" v-model="userClass" placeholder="float, background, bordered">
+    <div id="effect" :class="userClass"></div>
+  </div>
+  <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+  <div>
+    <input type="text" v-model="userClass">
+    <input type="text" v-model="isVisible">
+    <div id="effect" class="box" :class="[{visible: isVisible}, userClass]"></div>
+  </div>
+  <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+  <div>
+    <input v-model="proprierties.background" type="text">
+    <div id="effect" :style="proprierties"></div>
+  </div>
+  <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+  <div>
+    <button v-on:click="startProgress">Start Progress</button>
+    <div class="progress-bar">
+      <span :class="['bar']" :style="bar"></span>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
