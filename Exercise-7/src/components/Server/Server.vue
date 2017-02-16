@@ -3,3 +3,9 @@
       <p>Server Details are currently not updated</p>
   </div>
 </template>
+
+<style scoped>
+   div {
+    border: solid 1px red;
+   }
+</style>
