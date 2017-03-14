@@ -1,11 +1,25 @@
 <template>
-  <div class="col-xs-12 col-sm-6">
-      <p>Server Details are currently not updated</p>
-  </div>
+    <li
+      class="list-group-item"
+      style="cursor: pointer"
+      @click="serverSelected">
+        Server #{{ server.id }}
+    </li>
 </template>
 
-<style scoped>
-   div {
-    border: solid 1px red;
-   }
+<script>
+  import { serverBus } from '../../main';
+  export default {
+    props: ['server'],
+    methods: {
+      serverSelected() {
+        console.log(this.server);
+        serverBus.$emit('serverSelected', this.server);
+      }
+    }
+  }
+</script>
+
+<style>
+
 </style>
