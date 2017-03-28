@@ -2,42 +2,36 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <button @click="selectedComponent = 'appQuote'">Quote</button>
-                <button @click="selectedComponent = 'appAuthor'">Author</button>
-                <button @click="selectedComponent = 'appNew'">New</button>
+                <br>
+                <button @click="selectedComponent = 'app-blue'"class="btn btn-primary">Load Blue Template</button>
+                <button @click="selectedComponent = 'app-green'"class="btn btn-success">Load Green Template</button>
+                <button @click="selectedComponent = 'app-red'"class="btn btn-danger">Load Red Template</button>
                 <hr>
 
-                <p>{{ selectedComponent}}</p>
-                <keep-alive>
-                  <component :is="selectedComponent">
-                    <p>Default content</p>
-                  </component>
-                </keep-alive>
-               <!-- <app-quote>
-                 <h1 slot="title">{{quoteTitle}}</h1>
-                 <p>heuheuhee</p>
-               </app-quote> -->
+                <component :is="selectedComponent">
+                    <h2>This is a title</h2>
+                    <h2>This a short description</h2>
+                </component>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Quote from './components/Quote.vue';
-    import Author from './components/Author.vue';
-    import New from './components/New.vue';
+    import Blue from './components/Blue.vue';
+    import Green from './components/Green.vue';
+    import Red from './components/Red.vue';
 
     export default {
         data: function() {
-          return {
-            quoteTitle: 'The quote title',
-            selectedComponent: 'appQuote'
-          }
+            return {
+                selectedComponent: 'app-blue'
+            }
         },
         components: {
-          appQuote: Quote,
-          appAuthor: Author,
-          appNew: New
+            appBlue: Blue,
+            appGreen: Green,
+            appRed: Red
         }
     }
 </script>
