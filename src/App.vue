@@ -1,37 +1,29 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <br>
-                <button @click="selectedComponent = 'app-blue'"class="btn btn-primary">Load Blue Template</button>
-                <button @click="selectedComponent = 'app-green'"class="btn btn-success">Load Green Template</button>
-                <button @click="selectedComponent = 'app-red'"class="btn btn-danger">Load Red Template</button>
-                <hr>
-
-                <component :is="selectedComponent">
-                    <h2>This is a title</h2>
-                    <h2>This a short description</h2>
-                </component>
-            </div>
-        </div>
+        <app-new-quote @quoteAdded="newQuote"></app-new-quote>
+        <app-quote-grid :quotes="quotes"></app-quote-grid>
     </div>
 </template>
 
 <script>
-    import Blue from './components/Blue.vue';
-    import Green from './components/Green.vue';
-    import Red from './components/Red.vue';
+    import QuoteGrid from './components/QuoteGrid.vue';
+    import NewQuote from './components/NewQuote.vue';
 
     export default {
-        data: function() {
-            return {
-                selectedComponent: 'app-blue'
-            }
+        data: function () {
+          return {
+              quotes: ['Just a quote to see something'],
+              maxQuotes: 10
+          }
+        },
+        methods: {
+           newQuote(quote) {
+               this.quotes.push(quote);
+           }
         },
         components: {
-            appBlue: Blue,
-            appGreen: Green,
-            appRed: Red
+            appQuoteGrid: QuoteGrid,
+            appNewQuote: NewQuote
         }
     }
 </script>
